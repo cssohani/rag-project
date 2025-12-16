@@ -13,9 +13,15 @@
   "license": "ISC",
   "type": "module",
   "dependencies": {
+    "@langchain/community": "^1.1.0",
+    "@langchain/core": "^1.1.6",
+    "@langchain/openai": "^1.2.0",
+    "@langchain/textsplitters": "^1.0.1",
     "cors": "^2.8.5",
-    "dotenv": "^17.2.3",
-    "express": "^5.2.1"
+    "dotenv": "^16.4.5",
+    "express": "^4.22.1",
+    "hnswlib-node": "^3.0.0",
+    "pdf-parse": "^1.1.1"
   },
   "devDependencies": {
     "nodemon": "^3.1.11"
