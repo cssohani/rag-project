@@ -34,6 +34,7 @@ export async function ingestPdfToCollection({
   vectorstoresRoot = "vectorstores",
   chunkSize = 1000,
   chunkOverlap = 200,
+  mode = "replace"
 }) {
   if (!process.env.OPENAI_API_KEY) {
     throw new Error("Missing OPENAI_API_KEY in environment.");
@@ -57,9 +58,15 @@ export async function ingestPdfToCollection({
 
   const indexDir = path.join(vectorstoresRoot, collectionId);
   ensureDir(indexDir);
+  
+  if (mode === "replace" && fs.existsSync(indexDir)) {
+  fs.rmSync(indexDir, { recursive: true, force: true });
+  ensureDir(indexDir);
+}
 
   const existsCheckFile = path.join(indexDir, "args.json");
 
+  
   let vectorstore;
   if (fs.existsSync(existsCheckFile)) {
     vectorstore = await HNSWLib.load(indexDir, embeddings);

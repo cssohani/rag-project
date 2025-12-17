@@ -53,6 +53,7 @@ app.post("/upload", upload.single("file"), async (req, res) => {
     const result = await ingestPdfToCollection({
       collectionId,
       filePath,
+      mode: "replace",
     });
 
     res.json({

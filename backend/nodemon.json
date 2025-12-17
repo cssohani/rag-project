@@ -1,0 +1,5 @@
+{
+  "watch": ["server.js", "src"],
+  "ignore": ["uploads/**", "vectorstores/**"],
+  "ext": "js,json"
+}
